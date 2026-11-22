@@ -1,0 +1,54 @@
+<!-- Tôi cần làm 1 thiệp mời tốt nghiệp dạng trang web đơn giản có thể deploy trên github => ưu tiên html
+Style: Trắng + Xanh dương nhạt + Hồng nhạt, lời văn thân quen hài hước
+Bạn có thể thoải mái chèn ảnh, hiệu ứng, nhạc miễn phù hợp.
+
+I. Lịch trình: Ngày 28/11/2026
+
+08:00 - Diệu, Hương, Chị Nguyệt - Cổng 1 Đại học Bách Khoa Q10 - Giao lưu văn nghệ
+08:30 - Minh Tú, Huy, anh Tài, Việt Anh - Cổng 1 Đại học Bách Khoa Q10 - Giao lưu văn nghệ 
+09:00 - Âu Ngân, Bích Ngọc, Cẩm Tú, Hạ Nguyên, Khánh Ngân - Cổng 1 Đại học Bách Khoa Q10 - Giao lưu văn nghệ 
+10:00 - Mẹ Thiết - Cổng 1 Đại học Bách Khoa Q10 - Giao lưu văn nghệ 
+
+11:00 - Mẹ Thiết, Diệu, Hương - Truyền thuyết Champong Quận 10 - Ăn trưa
+
+13:30 - Diệu - Lễ tốt nghiệp
+
+18:30 - Diệu, Chị Tâm, Hương, Mẹ Thiết - Quán ốc gần nhà - Ăn tối
+
+
+II. Khách mời:
+
+    - Diệu: Chị gái xinh đẹp
+    - Hương: Em gái cute
+    - Nguyệt: Chị hàng xóm 100 điểm 
+    - Minh Tú: Bạn già dô sản
+    - Huy: Đồng cọc quán cà phê  
+    - Anh Tài: Ông anh github 12 tiếng
+    - Việt Anh: Bạn học trên chục năm
+    - Âu Ngân: Cô kế toán 707 
+    - Bích Ngọc: Ngựa dô cùng
+    - Cẩm Tú: Chúa tổ hâm đồ ăn
+    - Hạ Nguyên: Bé iu 707
+    - Khánh Ngân: Quản trại 707
+    - Mẹ Thiết: Phú bà bao nuôi tui
+
+III. Các trang: 
+
+1. Trang nhập mã thư mời - gen cho mỗi người một mã thư mời 6 số, nhập đúng mới chuyển sang trang tiếp theo
+2. Trang xác nhận:
+    - Đặt câu hỏi: "Bạn có thực sự là {tên} kiêm {biệt danh từng người} của Măng Tre hông?"
+    - Có nút Yes và nút No, nếu người dùng di chuyển lại gần nút No, nút này sẽ chạy mất và nút Yes sẽ to lên 50%
+    - Khi người dùng nhấn vào nút Yes, hiện thông báo, "Để chứng minh bạn thật sự là {tên}, hãy giải câu đố sau!"
+3. Trang câu đố: 
+    - "Gương kia ngự ở trên tường thế gian ai đẹp nhất?"
+    - Hiện 4 đáp án: "A. Măng Tre ak Huyền Trần", "B. {biệt danh từng người} ak {tên}", "C. Shin Bút Chì", "D. Bạch Tuyết"
+    - Khi người dùng chọn C, D hiển thị thông báo: "Dễ vậy cũng sai cho được + icon bạn tự chọn", nếu người dùng chọn B báo "Hệ thống lỗi, vui lòng chọn lại!",
+    nếu người dùng chọn A, hiện hiệu ứng chúc mừng chính xác và thông báo "Bạn có gu đấy!"
+    - Chuyển sang trang tiếp
+4. Trang thiệp mời: Phần này bạn tùy chỉnh lời lại cho hợp lý
+    - Mời khách đến địa điểm và giờ tui đã list ở mục I, nếu khách có nhiều hoạt động thì phải list hết hoạt động tương ứng với khách
+    - Gặp ở Sân bóng (Xem sơ đồ đính kèm, phần viền đỏ), Trường Đại học Bách khoa – Đại học Quốc gia TP.HCM (HCMUT) có Cơ sở 1 tọa lạc tại 268 Lý Thường Kiệt, Phường 14 (nay thuộc Phường Diên Hồng), Quận 10, TP. Hồ Chí Minh 
+    - Ngỏ lời: Bạn có đang thích nhân vật trong phim, tiểu thuyết, anime gì không hoặc trend muốn quay? Tui sẽ kiếm dáng chụp ảnh khớp nhân vật! Chèn ô input cho người dùng nhập nha
+    - Xác nhận: Bạn xác nhận sẽ đến chứ, nếu bận don't worry we have other association (tiếng anh bạn sửa lại giùm tui)? Lựa chọn Yes, of course! và Dịp khác nghenn!
+    - Lời cảm ơn
+    - Chèn sơ đồ trường, phần nằm trong ô viền đỏ là đích đến: ảnh map nằm cùng thư mục tên file hcmut_map.png -->

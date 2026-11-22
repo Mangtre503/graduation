@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Thiệp mời tốt nghiệp của Măng Tre 🎓</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&family=Quicksand:wght@500;600;700&display=swap">
+<style>
+:root{--white:#fff;--blue:#dff0ff;--blue2:#b9dcff;--blue3:#5b9bd5;--pink:#ffe3ee;--pink2:#ffb8d1;--pink3:#e5679a;--ink:#2b3a55}
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%}
+body{font-family:'Quicksand',system-ui,sans-serif;color:var(--ink);background:linear-gradient(160deg,var(--blue) 0%,var(--white) 45%,var(--pink) 100%);background-attachment:fixed;overflow-x:hidden}
+h1,h2,h3{font-family:'Baloo 2','Quicksand',sans-serif;margin:.2em 0;line-height:1.15}
+.page{display:none;min-height:100vh;padding:32px 18px 60px;align-items:center;justify-content:center;flex-direction:column;text-align:center}
+.page.on{display:flex;animation:pop .45s ease}
+@keyframes pop{from{opacity:0;transform:scale(.96)}to{opacity:1;transform:none}}
+.card{background:var(--white);border:3px solid var(--blue2);border-radius:28px;padding:28px 24px;max-width:560px;width:100%;box-shadow:8px 8px 0 var(--pink2)}
+.card.wide{max-width:720px;text-align:left}
+.big{font-size:clamp(1.9rem,6vw,2.8rem);color:var(--blue3)}
+.big em{font-style:normal;color:var(--pink3)}
+p{line-height:1.6;margin:.5em 0}
+input[type=text],textarea{width:100%;font:inherit;font-size:1.1rem;padding:12px 16px;border:3px solid var(--blue2);border-radius:16px;background:var(--blue);color:var(--ink);outline:none}
+input:focus,textarea:focus{border-color:var(--pink3);background:#fff}
+#code{text-align:center;letter-spacing:.5em;font-size:1.6rem;font-weight:700}
+.btn{font:inherit;font-weight:700;font-size:1.1rem;border:none;border-radius:999px;padding:12px 28px;cursor:pointer;background:var(--blue3);color:#fff;box-shadow:0 4px 0 #3b78b0;transition:transform .12s}
+.btn:active{transform:translateY(3px);box-shadow:0 1px 0 #3b78b0}
+.btn.pink{background:var(--pink3);box-shadow:0 4px 0 #b8447a}
+.btn.ghost{background:var(--blue);color:var(--ink);box-shadow:0 4px 0 var(--blue2)}
+.btn:focus-visible,input:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+.err{color:var(--pink3);font-weight:700;min-height:1.6em}
+.shake{animation:shake .4s}
+@keyframes shake{25%{transform:translateX(-8px)}75%{transform:translateX(8px)}}
+#btns{display:flex;gap:26px;align-items:center;justify-content:center;min-height:150px;margin-top:14px}
+#yes{transition:transform .25s;transform-origin:center}
+#no{transition:left .18s,top .18s}
+.msg{font-size:1.25rem;font-weight:700;color:var(--blue3);margin-top:14px}
+.opts{display:grid;gap:12px;margin-top:16px}
+.opt{text-align:left;font:inherit;font-weight:600;font-size:1.05rem;padding:14px 18px;border-radius:18px;border:3px solid var(--blue2);background:var(--white);cursor:pointer;color:var(--ink);transition:.15s}
+.opt:hover{background:var(--pink);border-color:var(--pink2)}
+.opt.ok{background:#d9f7e4;border-color:#6cc58c}
+.sched{list-style:none;padding:0;margin:14px 0}
+.sched li{display:flex;gap:12px;align-items:flex-start;padding:12px 14px;margin:10px 0;border-radius:18px;background:var(--blue)}
+.sched li:nth-child(even){background:var(--pink)}
+.sched .t{font-family:'Baloo 2';font-weight:800;font-size:1.3rem;color:var(--blue3);min-width:64px}
+.sched li:nth-child(even) .t{color:var(--pink3)}
+.sched small{display:block;opacity:.8}
+.map{width:100%;border-radius:18px;border:3px solid var(--blue2);display:block;margin:10px 0}
+.row{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin:14px 0}
+a{color:var(--blue3);font-weight:700}
+hr{border:none;border-top:3px dotted var(--pink2);margin:26px 0}
+#music{position:fixed;right:14px;top:14px;z-index:20;width:48px;height:48px;border-radius:50%;border:3px solid var(--blue2);background:#fff;font-size:1.4rem;cursor:pointer}
+.float{position:fixed;font-size:1.6rem;opacity:.55;pointer-events:none;animation:fl 9s ease-in-out infinite;z-index:0}
+@keyframes fl{50%{transform:translateY(-22px) rotate(10deg)}}
+.page,.card{position:relative;z-index:1}
+canvas{position:fixed;inset:0;pointer-events:none;z-index:50}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<button id="music" title="Bật/tắt nhạc" aria-label="Bật/tắt nhạc">🎵</button>
+<span class="float" style="left:6%;top:12%">🎓</span><span class="float" style="right:8%;top:30%;animation-delay:2s">🌸</span>
+<span class="float" style="left:10%;bottom:14%;animation-delay:4s">☁️</span><span class="float" style="right:12%;bottom:10%;animation-delay:1s">💙</span>
+<canvas id="fx"></canvas>
+
+<!-- 1. NHẬP MÃ -->
+<section class="page on" id="p1">
+  <div class="card">
+    <div style="font-size:3rem">💌</div>
+    <h1 class="big">Thư mời <em>tốt nghiệp</em></h1>
+    <p>Ai cầm trong tay mã 6 số thì được vào, còn không có thì... ra ngoài ngắm hoa nhen!</p>
+    <input id="code" type="text" inputmode="numeric" maxlength="6" placeholder="••••••" autocomplete="off" aria-label="Mã thư mời">
+    <div class="err" id="err1"></div>
+    <button class="btn" id="go1">Mở thư</button>
+  </div>
+</section>
+
+<!-- 2. XÁC NHẬN -->
+<section class="page" id="p2">
+  <div class="card">
+    <h2 class="big" id="q2"></h2>
+    <div id="btns">
+      <button class="btn" id="yes">Yes</button>
+      <button class="btn pink" id="no">No</button>
+    </div>
+    <div class="msg" id="m2"></div>
+    <button class="btn" id="go2" style="display:none;margin-top:16px">Giải đố thôi</button>
+  </div>
+</section>
+
+<!-- 3. CÂU ĐỐ -->
+<section class="page" id="p3">
+  <div class="card">
+    <div style="font-size:2.6rem">🪞</div>
+    <h2 class="big">Gương kia ngự ở trên tường, thế gian ai đẹp nhất?</h2>
+    <div class="opts" id="opts"></div>
+    <div class="msg" id="m3"></div>
+  </div>
+</section>
+
+<!-- 4. THIỆP -->
+<section class="page" id="p4">
+  <div class="card wide">
+    <div style="text-align:center">
+      <div style="font-size:2.6rem">🎓💙🌸</div>
+      <h1 class="big">Măng Tre <em>ra trường</em> rồi nè!</h1>
+      <p id="hello"></p>
+    </div>
+    <hr>
+    <h3>📅 Thứ Bảy, 28/11/2026 — lịch của riêng bạn</h3>
+    <ul class="sched" id="sched"></ul>
+
+    <h3>📍 Điểm hẹn chụp hình</h3>
+    <p>Gặp ở <b>sân bóng</b> (khung viền đỏ trên sơ đồ), Trường Đại học Bách Khoa – ĐHQG TP.HCM (HCMUT) cơ sở 1, <b>268 Lý Thường Kiệt, Phường 14 (nay thuộc Phường Diên Hồng), Quận 10, TP.HCM</b>. Vào Cổng 1 rồi cứ đi thẳng tới chỗ có người cầm máy ảnh và nụ cười gượng nhẹ là tới!</p>
+    <img class="map" src="hcmut_map.png" alt="Sơ đồ HCMUT, sân bóng nằm trong ô viền đỏ" onerror="this.outerHTML='<p><i>(Thiếu ảnh hcmut_map.png — nhớ để cùng thư mục với index.html nha!)</i></p>'">
+    <div class="row"><a class="btn ghost" style="text-decoration:none" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=268+L%C3%BD+Th%C6%B0%E1%BB%9Dng+Ki%E1%BB%87t+Qu%E1%BA%ADn+10">Mở Google Maps</a></div>
+
+    <hr>
+    <h3>🎬 Ngỏ lời nhỏ</h3>
+    <p>Bạn đang mê nhân vật phim, tiểu thuyết, anime nào không? Hoặc có trend nào muốn quay? Tui sẽ tìm dáng chụp ảnh khớp nhân vật cho bạn luôn!</p>
+    <input type="text" id="fav" placeholder="Ví dụ: Conan, Elio, trend nhảy…" aria-label="Nhân vật hoặc trend bạn thích">
+
+    <hr>
+    <h3>✅ Xác nhận nè</h3>
+    <p>Bạn sẽ đến chứ? Nếu bận cũng đừng lo — <i>no worries, we'll catch up another time!</i></p>
+    <div class="row">
+      <button class="btn" id="rYes">Yes, of course! 🎉</button>
+      <button class="btn pink" id="rNo">Dịp khác nghenn! 🥲</button>
+    </div>
+    <div class="msg" id="rMsg" style="text-align:center"></div>
+    <div id="copyBox" style="display:none;text-align:center">
+      <button class="btn ghost" id="copy">Copy câu trả lời gửi Măng Tre</button>
+    </div>
+
+    <hr>
+    <div style="text-align:center">
+      <h3>💖 Lời cảm ơn</h3>
+      <p>Cảm ơn bạn đã luôn có mặt, ăn chung, cười chung và chịu đứng chụp hình giữa nắng Sài Gòn với tụi tui. Có bạn, ngày tốt nghiệp của Măng Tre mới trọn vẹn!</p>
+      <p><b>— Măng Tre (Huyền Trần) 🎋</b></p>
+    </div>
+  </div>
+</section>
+
+<script>
+/* ===== DỮ LIỆU ===== */
+const P = {
+ dieu:{n:"Diệu",nick:"Chị gái xinh đẹp",code:"482915"},
+ huong:{n:"Hương",nick:"Em gái cute",code:"736204"},
+ nguyet:{n:"Nguyệt",nick:"Chị hàng xóm 100 điểm",code:"159376"},
+ tu:{n:"Minh Tú",nick:"Bạn già dô sản",code:"364821"},
+ huy:{n:"Huy",nick:"Đồng cọc quán cà phê",code:"927148"},
+ tai:{n:"Anh Tài",nick:"Ông anh github 12 tiếng",code:"508263"},
+ va:{n:"Việt Anh",nick:"Bạn học trên chục năm",code:"671590"},
+ angan:{n:"Âu Ngân",nick:"Cô kế toán 707",code:"213847"},
+ ngoc:{n:"Bích Ngọc",nick:"Ngựa dô cùng",code:"845026"},
+ ctu:{n:"Cẩm Tú",nick:"Chúa tổ hâm đồ ăn",code:"390672"},
+ nguyen:{n:"Hạ Nguyên",nick:"Bé iu 707",code:"758413"},
+ kngan:{n:"Khánh Ngân",nick:"Quản trại 707",code:"126985"},
+ thiet:{n:"Mẹ Thiết",nick:"Phú bà bao nuôi tui",code:"604739"},
+ tam:{n:"Chị Tâm",nick:"Chị Tâm bí ẩn",code:"897351"} /* TODO: đổi biệt danh */
+};
+const CHAMP="Truyền thuyết Champong Quận 10", GATE="Cổng 1 ĐH Bách Khoa Q10", OC="Quán ốc gần nhà";
+const E = [
+ {t:"08:00",w:["dieu","huong","nguyet"],p:GATE,a:"Giao lưu văn nghệ 📸"},
+ {t:"08:30",w:["tu","huy","tai","va"],p:GATE,a:"Giao lưu văn nghệ 📸"},
+ {t:"09:00",w:["angan","ngoc","ctu","nguyen","kngan"],p:GATE,a:"Giao lưu văn nghệ 📸"},
+ {t:"10:00",w:["thiet"],p:GATE,a:"Giao lưu văn nghệ 📸"},
+ {t:"11:00",w:["thiet","dieu","huong"],p:CHAMP,a:"Ăn trưa 🍜"},
+ {t:"13:30",w:["dieu"],p:"Hội trường lễ tốt nghiệp",a:"Lễ tốt nghiệp của Măng Tre 🎓 (đi cổ vũ nha!)"},
+ {t:"18:30",w:["dieu","tam","huong","thiet"],p:OC,a:"Ăn tối 🍻"}
+];
+let me=null;
+const $=id=>document.getElementById(id);
+const show=id=>{document.querySelectorAll('.page').forEach(p=>p.classList.remove('on'));$(id).classList.add('on');window.scrollTo(0,0)};
+
+/* ===== NHẠC (file mncn.mp3 cùng thư mục) ===== */
+const bgm=new Audio('mncn.mp3');bgm.loop=true;bgm.volume=.6;bgm.preload='auto';
+let musicOn=false;
+function setMusic(on){
+  musicOn=on;$('music').textContent=on?'🎵':'🔇';
+  if(on){const pr=bgm.play();if(pr&&pr.catch)pr.catch(()=>{musicOn=false;$('music').textContent='🔇';});}
+  else bgm.pause();
+}
+let userMuted=false;
+$('music').onclick=()=>{userMuted=musicOn;setMusic(!musicOn);};
+/* Bật nhạc ngay khi mở trang. Nếu trình duyệt chặn autoplay thì bật ở lần chạm/bấm phím đầu tiên */
+function autoStart(){
+  if(userMuted||musicOn)return;
+  const pr=bgm.play();
+  if(pr&&pr.then)pr.then(()=>{musicOn=true;$('music').textContent='🎵';removeGesture();}).catch(()=>{});
+}
+const gestureEv=['pointerdown','touchstart','keydown','click'];
+function onGesture(e){
+  if(e.target.closest&&e.target.closest('#music'))return;
+  autoStart();
+}
+function removeGesture(){gestureEv.forEach(ev=>document.removeEventListener(ev,onGesture,true));}
+gestureEv.forEach(ev=>document.addEventListener(ev,onGesture,true));
+$('music').textContent='🔇';
+autoStart();
+window.addEventListener('load',autoStart);
+
+/* ===== CONFETTI ===== */
+const cv=$('fx'),cx=cv.getContext('2d');let parts=[],raf;
+function confetti(){
+  cv.width=innerWidth;cv.height=innerHeight;
+  const cols=["#5b9bd5","#b9dcff","#ffb8d1","#e5679a","#fff"];
+  parts=Array.from({length:150},()=>({x:Math.random()*cv.width,y:-20-Math.random()*200,vx:Math.random()*4-2,vy:2+Math.random()*4,s:5+Math.random()*7,c:cols[Math.random()*5|0],r:Math.random()*6}));
+  cancelAnimationFrame(raf);
+  (function f(){cx.clearRect(0,0,cv.width,cv.height);
+    parts.forEach(p=>{p.x+=p.vx;p.y+=p.vy;p.r+=.1;cx.fillStyle=p.c;cx.save();cx.translate(p.x,p.y);cx.rotate(p.r);cx.fillRect(-p.s/2,-p.s/2,p.s,p.s*.6);cx.restore()});
+    parts=parts.filter(p=>p.y<cv.height+20);
+    if(parts.length)raf=requestAnimationFrame(f);else cx.clearRect(0,0,cv.width,cv.height);})();
+}
+
+/* ===== TRANG 1 ===== */
+function check(){
+  const v=$('code').value.trim();
+  const k=Object.keys(P).find(k=>P[k].code===v);
+  if(!k){$('err1').textContent="Sai mã rồi, soi lại tin nhắn đi nè 🕵️";$('code').classList.remove('shake');void $('code').offsetWidth;$('code').classList.add('shake');return;}
+  me=k;autoStart();start2();
+}
+$('go1').onclick=check;
+$('code').addEventListener('keydown',e=>{if(e.key==='Enter')check()});
+
+/* ===== TRANG 2 ===== */
+let scale=1;
+function start2(){
+  const p=P[me];scale=1;
+  $('q2').textContent=`Bạn có thực sự là ${p.n} kiêm ${p.nick} của Măng Tre hông?`;
+  $('q2').style.display='';$('btns').style.display='';$('no').style.display='';$('yes').style.transform='scale(1)';$('m2').textContent='';$('go2').style.display='none';
+  $('no').style.position='';$('no').style.left=$('no').style.top='';
+  show('p2');
+}
+function flee(){
+  const no=$('no');no.style.position='fixed';
+  const w=no.offsetWidth,h=no.offsetHeight;
+  no.style.left=Math.random()*(innerWidth-w-20)+10+'px';
+  no.style.top=Math.random()*(innerHeight-h-20)+10+'px';
+  scale=Math.min(scale*1.5,4);$('yes').style.transform=`scale(${scale})`;
+}
+['pointerenter','touchstart','focus'].forEach(ev=>$('no').addEventListener(ev,e=>{e.preventDefault();flee()},{passive:false}));
+$('no').addEventListener('click',e=>{e.preventDefault();flee()});
+$('yes').onclick=()=>{
+  $('btns').style.display='none';$('no').style.display='none';$('q2').style.display='none';
+  $('m2').textContent=`Để chứng minh bạn thật sự là ${P[me].n}, hãy giải câu đố sau!`;
+  $('go2').style.display='inline-block';
+};
+$('go2').onclick=start3;
+
+/* ===== TRANG 3 ===== */
+function start3(){
+  const p=P[me];$('m3').textContent='';
+  const opts=[["A","Măng Tre ak Huyền Trần"],["B",`${p.nick} ak ${p.n}`],["C","Shin Bút Chì"],["D","Bạch Tuyết"]];
+  $('opts').innerHTML='';
+  opts.forEach(([k,t])=>{
+    const b=document.createElement('button');b.className='opt';b.textContent=`${k}. ${t}`;
+    b.onclick=()=>answer(k,b);$('opts').appendChild(b);
+  });
+  show('p3');
+}
+function answer(k,b){
+  const m=$('m3');
+  if(k==='C'||k==='D'){m.textContent='Dễ vậy cũng sai cho được 🤦‍♀️';}
+  else if(k==='B'){m.textContent='Hệ thống lỗi, vui lòng chọn lại! ⚠️';}
+  else{b.classList.add('ok');m.textContent='Bạn có gu đấy! 😎✨';confetti();
+    document.querySelectorAll('.opt').forEach(o=>o.disabled=true);
+    setTimeout(start4,2200);}
+}
+
+/* ===== TRANG 4 ===== */
+function start4(){
+  const p=P[me];
+  $('hello').innerHTML=`Chào <b>${p.n}</b>! Ngày tốt nghiệp của Măng Tre có chỗ cho bạn, và tui đã xếp lịch riêng cho bạn luôn rồi. Nhớ mang theo nụ cười và dạ dày trống nha!`;
+  const mine=E.filter(e=>e.w.includes(me));
+  $('sched').innerHTML=mine.map(e=>{
+    const others=e.w.filter(x=>x!==me).map(x=>P[x].n);
+    return `<li><span class="t">${e.t}</span><span><b>${e.a}</b><small>📍 ${e.p}</small>${others.length?`<small>👯 Đi cùng: ${others.join(', ')}</small>`:''}</span></li>`;
+  }).join('');
+  show('p4');
+}
+const MAIL="tranthingochuyen1772004@gmail.com"; /* sau khi kích hoạt, có thể thay bằng mã ngẫu nhiên FormSubmit gửi cho bạn để ẩn email */
+let sending=false;
+async function rsvp(yes){
+  if(sending)return;
+  const fav=$('fav').value.trim(),p=P[me];
+  const txt=`[${p.n}] ${yes?'Mình sẽ đến! 🎉':'Mình bận rồi, dịp khác nghenn! 🥲'}${fav?` | Dáng chụp theo: ${fav}`:''}`;
+  $('copy').dataset.txt=txt;
+  sending=true;$('rYes').disabled=$('rNo').disabled=true;
+  $('rMsg').textContent='Đang gửi cho Măng Tre… 📮';
+  try{
+    const r=await fetch('https://formsubmit.co/ajax/'+MAIL,{method:'POST',
+      headers:{'Content-Type':'application/json','Accept':'application/json'},
+      body:JSON.stringify({_subject:`[Thiệp tốt nghiệp] ${p.n} - ${yes?'SẼ ĐẾN':'BẬN'}`,_captcha:'false',_template:'table',
+        Khách:`${p.n} (${p.nick})`,'Xác nhận':yes?'Yes, of course!':'Dịp khác nghenn!',
+        'Nhân vật/trend muốn chụp':fav||'(không điền)',message:txt})});
+    const j=await r.json();
+    if(!r.ok||j.success==='false')throw 0;
+    $('rMsg').textContent=yes?'Đã gửi! Hẹn bạn ngày 28/11 nha 🥳':'Đã gửi! Dịp khác tụi mình bù nha 🫶';
+    if(yes)confetti();
+  }catch(e){
+    $('rMsg').textContent='Gửi chưa được 😢 Bạn bấm nút bên dưới để copy rồi nhắn Măng Tre nha!';
+    $('copyBox').style.display='block';
+    $('rYes').disabled=$('rNo').disabled=false;
+  }
+  sending=false;
+}
+$('rYes').onclick=()=>rsvp(true);$('rNo').onclick=()=>rsvp(false);
+$('copy').onclick=function(){
+  navigator.clipboard?.writeText(this.dataset.txt).then(()=>this.textContent='Đã copy! Dán gửi Măng Tre nha 💌').catch(()=>prompt('Copy câu này gửi Măng Tre:',this.dataset.txt));
+};
+</script>
+</body>
+</html>
